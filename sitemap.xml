@@ -2,53 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.org/post/singleitemtolistconverter/</loc>
+    <loc>https://danfreemantle.github.io/post/singleitemtolistconverter/</loc>
     <lastmod>2017-04-24T09:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/tags/.net/</loc>
-    <lastmod>2017-04-24T09:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/tags/c#/</loc>
+    <loc>https://danfreemantle.github.io/tags/.net/</loc>
     <lastmod>2017-04-24T09:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/tags/json/</loc>
+    <loc>https://danfreemantle.github.io/tags/c#/</loc>
     <lastmod>2017-04-24T09:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/newtonsoft/</loc>
+    <loc>https://danfreemantle.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://danfreemantle.github.io/tags/json/</loc>
     <lastmod>2017-04-24T09:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/</loc>
+    <loc>https://danfreemantle.github.io/tags/newtonsoft/</loc>
     <lastmod>2017-04-24T09:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://danfreemantle.github.io/post/</loc>
     <lastmod>2017-04-24T09:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://danfreemantle.github.io/tags/</loc>
+    <lastmod>2017-04-24T09:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://danfreemantle.github.io/</loc>
     <lastmod>2017-04-24T09:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>

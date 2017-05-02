@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Newtonsoft on df</title>
-    <link>http://example.org/tags/newtonsoft/</link>
+    <link>https://danfreemantle.github.io/tags/newtonsoft/</link>
     <description>Recent content in Newtonsoft on df</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Mon, 24 Apr 2017 09:00:00 +0100</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/newtonsoft/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://danfreemantle.github.io/tags/newtonsoft/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SingleItemToListConverter&lt;T&gt;</title>
-      <link>http://example.org/post/singleitemtolistconverter/</link>
+      <link>https://danfreemantle.github.io/post/singleitemtolistconverter/</link>
       <pubDate>Mon, 24 Apr 2017 09:00:00 +0100</pubDate>
       
-      <guid>http://example.org/post/singleitemtolistconverter/</guid>
+      <guid>https://danfreemantle.github.io/post/singleitemtolistconverter/</guid>
       <description>When you import data into C# using the Newtonsoft JSON framework you can be caught out by incorrectly formatted JSON. When this happens your code can throw an exception or (even worse) the application can crash.
 Collections of data are often not correctly formatted, especially when they contain one item. They should always have the surrounding square brackets [ ] but these are sometimes missed off. You could also always want a JSON property to be added to a collection.</description>
     </item>
