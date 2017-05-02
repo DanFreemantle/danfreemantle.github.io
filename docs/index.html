@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.20" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>df</title>
+  
+
+  
+  <link rel="stylesheet" href="http://example.org/css/poole.css">
+  <link rel="stylesheet" href="http://example.org/css/syntax.css">
+  <link rel="stylesheet" href="http://example.org/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="http://example.org/index.xml" rel="alternate" type="application/rss+xml" title="df" />
+</head>
+
+<body class=" ">
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://example.org/"><h1>df</h1></a>
+      <p class="lead">
+       C#, Xamarin, anything 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+    <div class="content container">
+<div class="posts">
+
+      
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://example.org/post/singleitemtolistconverter/">
+        SingleItemToListConverter&lt;T&gt;
+      </a>
+    </h1>
+
+    <span class="post-date">Mon, Apr 24, 2017</span>
+
+    
+
+<p>When you import data into C# using the <a href="http://www.newtonsoft.com/json">Newtonsoft JSON framework</a> you can be caught out by incorrectly formatted JSON. When this happens your code can throw an exception or (even worse) the application can crash.</p>
+
+<p>Collections of data are often not correctly formatted, especially when they contain one item.  They should always have the surrounding square brackets <strong>[ ]</strong> but these are sometimes missed off. You could also always want a JSON property to be added to a collection.</p>
+
+<p>If either of these scenarios are useful to you, one simple way to handle this is to override the <strong>Newtonsoft</strong> converter with this <code>SingleItemToListConverter&lt;T&gt;</code> class.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Include the <code>SingleItemToListConverter&lt;T&gt;</code> class somewhere in your project:</p>
+
+<pre><code class="language-C#">public class SingleItemToListConverter&lt;T&gt; : JsonConverter
+{
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    {
+        var retVal = new object();
+
+        if (reader.TokenType == JsonToken.StartObject)
+        {
+            var instance = (T)serializer.Deserialize(reader, typeof(T));
+            retVal = new List&lt;T&gt; { instance };
+        }
+        else if (reader.TokenType == JsonToken.StartArray)
+        {
+            retVal = serializer.Deserialize(reader, objectType);
+        }
+
+        if (retVal == null)
+            retVal = new List&lt;T&gt;();
+
+        return retVal;
+    }
+
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    {
+        serializer.Serialize(writer, value, typeof(List&lt;T&gt;));
+    }
+
+    public override bool CanConvert(Type objectType)
+    {
+        return false;
+    }
+}
+</code></pre>
+
+<p>Now add the JsonConverter attribute to your property, and pass in the class you want to deserialise to:</p>
+
+<pre><code class="language-C#">[JsonProperty(&quot;Parts&quot;)]
+[JsonConverter(typeof(SingleItemToListConverter&lt;Part&gt;))]
+public List&lt;Part&gt; Parts
+</code></pre>
+
+<p>The key is in the ReadJson method, where we check if the <em>JSON token</em> is a array.  If it isn&rsquo;t, we create a new <code>List&lt;T&gt;</code> and add our one item to it.</p>
+
+  </div>
+  
+</div>
+</div>
+
+  </body>
+</html>
