@@ -64,7 +64,7 @@
 
 <p>When you import data into C# using the <a href="http://www.newtonsoft.com/json">Newtonsoft JSON framework</a> you can be caught out by incorrectly formatted JSON. When this happens your code can throw an exception or (even worse) the application can crash.</p>
 
-<p>Collections of data are often not correctly formatted, especially when they contain one item.  They should always have the surrounding square brackets <strong>[ ]</strong> but these are sometimes missed off. You could also always want a JSON property to be added to a collection.</p>
+<p>Collections of data are sometimes not correctly formatted, especially when they contain one item.  They should always have the surrounding square brackets <strong>[ ]</strong> but these can be missed off. You could also always want a JSON property to be added to a collection.</p>
 
 <p>If either of these scenarios are useful to you, one simple way to handle this is to override the <strong>Newtonsoft</strong> converter with this <code>SingleItemToListConverter&lt;T&gt;</code> class.</p>
 
