@@ -53,6 +53,48 @@
       
   <div class="post">
     <h1 class="post-title">
+      <a href="https://danfreemantle.github.io/post/signaturepad-2/">
+        SignaturePad 2
+      </a>
+    </h1>
+
+    <span class="post-date">Thu, May 11, 2017</span>
+
+    
+
+<p>Xamarin recently released version 2.0 of their SignaturePad control, and it&rsquo;s great for capturing and displaying signatures in your Xamarin apps.</p>
+
+<p>There are NuGet packages for <a href="https://www.nuget.org/packages/Xamarin.Controls.SignaturePad">Xamarin</a> projects and one specifically for <a href="https://www.nuget.org/packages/Xamarin.Controls.SignaturePad.Forms">Xamarin.Forms</a>.</p>
+
+<p>I&rsquo;ve implemented this recently and there are some <strong>gotchas</strong> you should be aware of:</p>
+
+<h3 id="default-text">Default text</h3>
+
+<p>If you don&rsquo;t specify the text properties, you&rsquo;ll end up with the following values as defaults:</p>
+
+<pre><code>CaptionText = &quot;Sign here.&quot;
+SignaturePromptText = &quot;X&quot;
+ClearLabelText = &quot;Clear&quot;
+</code></pre>
+
+<p>If you don&rsquo;t want any of these, remember to set the properties with an empty string.</p>
+
+<h3 id="saving-and-loading-points">Saving and loading points</h3>
+
+<p>The SignaturePadView control turns the signature into a collection of points (<code>IEnumerable&lt;Xamarin.Forms.Point&gt;</code>), which you can access via the <strong>Points</strong> property. You can save this collection of points and load them back, but I had major issues setting the <strong>Points</strong> property and having it actually stick.  I was setting the property in the constructor and having no luck, the key is to set it in OnAppearing instead:</p>
+
+<pre><code>async protected void OnAppearing()
+{
+    base.OnAppearing();
+    
+    signaturePadView.Points = signaturePoints;
+}
+</code></pre>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="https://danfreemantle.github.io/post/singleitemtolistconverter/">
         SingleItemToListConverter&lt;T&gt;
       </a>

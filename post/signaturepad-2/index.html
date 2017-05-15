@@ -1,0 +1,90 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.20" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>SignaturePad 2 &middot; df</title>
+  
+
+  
+  <link rel="stylesheet" href="https://danfreemantle.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://danfreemantle.github.io/css/syntax.css">
+  <link rel="stylesheet" href="https://danfreemantle.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="df" />
+</head>
+
+	<body class=" ">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://danfreemantle.github.io/"><h1>df</h1></a>
+      <p class="lead">
+       C#, Xamarin, anything 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2017. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>SignaturePad 2</h1>
+			  <span class="post-date">Thu, May 11, 2017</span>
+			      
+
+<p>Xamarin recently released version 2.0 of their SignaturePad control, and it&rsquo;s great for capturing and displaying signatures in your Xamarin apps.</p>
+
+<p>There are NuGet packages for <a href="https://www.nuget.org/packages/Xamarin.Controls.SignaturePad">Xamarin</a> projects and one specifically for <a href="https://www.nuget.org/packages/Xamarin.Controls.SignaturePad.Forms">Xamarin.Forms</a>.</p>
+
+<p>I&rsquo;ve implemented this recently and there are some <strong>gotchas</strong> you should be aware of:</p>
+
+<h3 id="default-text">Default text</h3>
+
+<p>If you don&rsquo;t specify the text properties, you&rsquo;ll end up with the following values as defaults:</p>
+
+<pre><code>CaptionText = &quot;Sign here.&quot;
+SignaturePromptText = &quot;X&quot;
+ClearLabelText = &quot;Clear&quot;
+</code></pre>
+
+<p>If you don&rsquo;t want any of these, remember to set the properties with an empty string.</p>
+
+<h3 id="saving-and-loading-points">Saving and loading points</h3>
+
+<p>The SignaturePadView control turns the signature into a collection of points (<code>IEnumerable&lt;Xamarin.Forms.Point&gt;</code>), which you can access via the <strong>Points</strong> property. You can save this collection of points and load them back, but I had major issues setting the <strong>Points</strong> property and having it actually stick.  I was setting the property in the constructor and having no luck, the key is to set it in OnAppearing instead:</p>
+
+<pre><code>async protected void OnAppearing()
+{
+    base.OnAppearing();
+    
+    signaturePadView.Points = signaturePoints;
+}
+</code></pre>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
