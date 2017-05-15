@@ -83,7 +83,7 @@ ClearLabelText = &quot;Clear&quot;
 
 <p>The SignaturePadView control turns the signature into a collection of points (<code>IEnumerable&lt;Xamarin.Forms.Point&gt;</code>), which you can access via the <strong>Points</strong> property. You can save this collection of points and load them back, but I had major issues setting the <strong>Points</strong> property and having it actually stick.  I was setting the property in the constructor and having no luck, the key is to set it in OnAppearing instead:</p>
 
-<pre><code>async protected void OnAppearing()
+<pre><code>protected void OnAppearing()
 {
     base.OnAppearing();
     
